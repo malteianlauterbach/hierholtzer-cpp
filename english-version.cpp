@@ -48,4 +48,19 @@ void hierholzer(int cur) {
     }
     eulerCircuit.push_front(cur);
 }
+void findEulerCircuit(vector<vector<int>>& edges) {
+    eulerCircuit.clear();
+    graph.clear();
+    for(auto edge : edges)
+        graph[edge[0]].insert(edge[1]);
+    cout << (isEulerCircuit() ? "is euler curcuit" : "not euler curcuit") << endl;
 
+    hierholzer(0);
+}
+
+int main() {
+    vector<vector<int>> edges = {{0,1},{1,2},{1,3},{2,1},{3,4},{4,0}};
+    findEulerCircuit(edges);
+    for(auto x : eulerCircuit)
+        printf("%d ", x);
+}
